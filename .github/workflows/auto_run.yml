@@ -1,0 +1,19 @@
+name: auto-run-test
+on:
+  pull_request:
+        branches:
+          - 'feature/**'
+jobs:
+  test-node:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        version: [14, 16]
+    if: ${{ github.ref_name == develop }}
+    steps:
+      - name: test for each node version
+      - uses: actions/setup-node@v3  
+        with:
+          node-version: ${{ matrix.version }}
+        run: npm run test
