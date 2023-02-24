@@ -10,13 +10,13 @@ jobs:
       fail-fast: true
       matrix:
         node-version: [14, 16]
-    if: ${{contains('feature', github.ref_name)}}
+    if: ${{startsWith(github.head_ref, 'feature/')}}
     steps:
-      - uses: action/checkout@v3
+      - uses: actions/checkout@v3
       - name: Use NodeJs ${{ matrix.node-version }}
         uses: actions/setup-node@v3 
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build --if-present
+      - run: npm install
+      - run: npm run
       - run: npm test
