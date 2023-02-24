@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-      - run: yarn test > coverage.txt
+      - run: yarn test --coverage > coverage.txt
       - name: create code coverage artifact
         uses: actions/upload-artifact@v3
         with:
