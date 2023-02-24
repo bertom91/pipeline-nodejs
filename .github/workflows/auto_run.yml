@@ -17,9 +17,8 @@ jobs:
         uses: actions/setup-node@v3 
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run
-      - run: npm test > coverage.txt
+      - run: yarn install
+      - run: yarn test > coverage.txt
       - name: create code coverage artifact
         uses: actions/upload-artifact@v3
         with:
