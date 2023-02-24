@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Create Branch
         uses: peterjgrainger/action-create-branch@v2.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: "resolve-issue"
           sha: "ef01937cb999335371aa97257e99e5adc08cbfc6"
