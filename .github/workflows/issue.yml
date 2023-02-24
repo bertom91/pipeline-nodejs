@@ -1,0 +1,14 @@
+name: create new branch on issue
+on:
+  issues:
+    types: [opened, assigned]
+jobs:
+  create-branch:
+    name: create new branch on issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Branch
+        uses: peterjgrainger/action-create-branch@v2.0.1
+        with:
+          branch: "resolve-issue"
+          sha: "ef01937cb999335371aa97257e99e5adc08cbfc6"
