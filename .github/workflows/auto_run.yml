@@ -10,7 +10,7 @@ jobs:
       fail-fast: true
       matrix:
         node-version: [14, 16]
-    if: ${{contains('feature', github.ref_name)}}
+    if: ${{startsWith(github.head_ref, 'feature/')}}
     steps:
       - uses: action/checkout@v3
       - name: Use NodeJs ${{ matrix.node-version }}
