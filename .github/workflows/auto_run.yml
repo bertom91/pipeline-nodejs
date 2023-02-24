@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run
-      - run: npm test --coverage > coverage.txt
+      - run: npm test > coverage.txt
       - name: create code coverage artifact
         uses: actions/upload-artifact@v3
         with:
