@@ -2,18 +2,19 @@ name: auto-run-test
 on:
   pull_request:
         branches:
-          - 'feature/**'
+          - 'develop'
 jobs:
   test-node:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
-        version: [14, 16]
-    if: ${{ github.ref_name == develop }}
+        node-version: [14, 16]
+    if: ${{contains(fromJSON('["feature"]'), github.ref_name)}}
     steps:
-      - name: test for each node version
-      - uses: actions/setup-node@v3  
+      - uses: action/checkout@v3
+      - name: Use NodeJs ${{ matrix.node-version }}
+        uses: actions/setup-node@v3 
         with:
-          node-version: ${{ matrix.version }}
-        run: npm run test
+          node-version: ${{ matrix.node-version }}
+      - run: npm run test
