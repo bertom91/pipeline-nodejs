@@ -20,6 +20,7 @@ jobs:
       - name: Install build test
         run: |
           npm install
+          npm install coverage
           npm run
           npm test:coverage > coverage.txt
       - name: create code coverage artifact
